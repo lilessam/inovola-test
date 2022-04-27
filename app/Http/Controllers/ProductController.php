@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         $product = new Product;
-        $product->user_id = $request->user()->id;
+        $product->store_id = $request->user()->store->id;
         $product->fill([
             'en' => [
               'name' => $request->en_name,

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Http\Request;
@@ -27,4 +28,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::put('/store', [StoreController::class, 'update']);
     Route::post('/products', [ProductController::class, 'store']);
+    Route::get('/cart/total', [CartController::class, 'total']);
+    Route::post('/cart/{id}', [CartController::class, 'store']);
 });
